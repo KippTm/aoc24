@@ -17,3 +17,11 @@ func extractNums(s string) []int {
 
     return nums
 }
+
+func removeIdx(nums []int, idx int) []int {
+    copyNums := make([]int, len(nums))
+    copy(copyNums, nums)
+    copyNums = append(copyNums[:idx], copyNums[idx+1:]...)
+
+    return copyNums
+}

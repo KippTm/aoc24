@@ -30,18 +30,35 @@ func isSafe(line []int) bool {
     return true
 }
 
+func checkDampener(line []int) bool {
+    if isSafe(line) {
+        return true
+    }
+    for i, _ := range line {
+        newNums := removeIdx(line, i)
+        if isSafe(newNums) {
+            return true
+        }
+    }
+    return false
+}
 
 func day2() {
     input, _ := os.ReadFile("day2.txt")
 
     lines := strings.Split(string(input), "\n")
     var safe int
+    var dampenerSafe int
     for _, l := range lines {
         nums := extractNums(l)
         if isSafe(nums) && len(nums) != 0 {
             safe++
+        } 
+        if checkDampener(nums) && len(nums) != 0 {
+            dampenerSafe++
         }
     }
 
-    fmt.Printf("Safe: %d", safe)
+    fmt.Printf("Safe: %d\n", safe)
+    fmt.Printf("Dampener safe: %d\n", dampenerSafe)
 }

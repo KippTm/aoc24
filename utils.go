@@ -2,8 +2,16 @@ package main
 
 import (
     "strconv"
+    "strings"
     "regexp"
+    "os"
 )
+
+func extractLines(filePath string) []string {
+    contents, _ := os.ReadFile(filePath)
+    lines := strings.Split(string(contents), "\n")
+    return lines
+}
 
 func extractNums(s string) []int {
     re := regexp.MustCompile(`\d+`)

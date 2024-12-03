@@ -60,7 +60,7 @@ func partTwo() {
     fmt.Printf("Simi: %d\n", sim)
 }
 
-func main() {
+/*func main() {
     partOne()
     partTwo()
-}
+}*/
